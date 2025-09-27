@@ -8,6 +8,14 @@
     "owner": "Kevinjil",
     "versions": [
       {
+        "changelog": "added folder count",
+        "checksum": "06276b442b9a5e7fddff917d7f1b207f",
+        "sourceUrl": "https://github.com/devsdaub/Jellyfin.Xtream/releases/download/v0.7.4/jellyfin-xtream_0.7.4.0.zip",
+        "targetAbi": "10.10.7.0",
+        "timestamp": "2025-09-27T14:17:39Z",
+        "version": "0.7.4.0"
+      },
+      {
         "changelog": "fixed button issue",
         "checksum": "3397887a34e47093b101d9a4a06f6760",
         "sourceUrl": "https://github.com/devsdaub/Jellyfin.Xtream/releases/download/v0.2/jellyfin-xtream_0.7.2.0.zip",
