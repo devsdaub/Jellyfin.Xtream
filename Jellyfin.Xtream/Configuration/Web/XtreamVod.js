@@ -20,12 +20,28 @@ export default function (view) {
       mainFolderName.value = config.MainFolderName || "Filme";
     });
 
+    const updateVodCount = (vodData) => {
+      let count = 0;
+      if (vodData) {
+        Object.values(vodData).forEach(arr => {
+          if (Array.isArray(arr)) count += arr.length;
+        });
+      }
+      const counter = view.querySelector('#VodSelectedCount');
+      if (counter) counter.textContent = `Ausgewählte Filme: ${count}`;
+    };
+
     Xtream.populateCategoriesTable(
       table,
       () => getConfig.then((config) => config.Vod),
       () => Xtream.fetchJson('Xtream/VodCategories'),
       (categoryId) => Xtream.fetchJson(`Xtream/VodCategories/${categoryId}`),
     ).then((data) => {
+      updateVodCount(data);
+      // Beobachte Änderungen an der Auswahl
+      const observer = new MutationObserver(() => updateVodCount(data));
+      observer.observe(table, { childList: true, subtree: true });
+
       view.querySelector('#XtreamVodForm').addEventListener('submit', (e) => {
         Dashboard.showLoadingMsg();
 
